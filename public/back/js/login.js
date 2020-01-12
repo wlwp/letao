@@ -1,3 +1,5 @@
+
+
 $(function() {
   // 1. 登录功能校验
   $('#form').bootstrapValidator({
@@ -14,7 +16,7 @@ $(function() {
             message: '用户名长度必须在2-6位之间'
           },
 
-          callback : {
+          callback: {
             message: '用户名不正确'
           }
         }
@@ -60,10 +62,13 @@ $(function() {
         console.log(res)
 
         if (res.error === 1000) {
-          $('#form').data('bootstrapValidator').updateStatus('username', 'INVALID', 'callback')
-          
+          $('#form')
+            .data('bootstrapValidator')
+            .updateStatus('username', 'INVALID', 'callback')
         } else if (res.error === 1001) {
-          $('#form').data('bootstrapValidator').updateStatus('password', 'INVALID', 'callback')
+          $('#form')
+            .data('bootstrapValidator')
+            .updateStatus('password', 'INVALID', 'callback')
         } else if (res.success) {
           location.href = 'index.html'
         }
@@ -73,8 +78,8 @@ $(function() {
 
   // 3. 点击重置按钮,重置表单
   $('[type="reset"]').on('click', function() {
-    $('#form').data('bootstrapValidator').resetForm()
+    $('#form')
+      .data('bootstrapValidator')
+      .resetForm()
   })
-
-
 })

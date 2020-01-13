@@ -149,3 +149,18 @@ ul {
   width: 48%;
   height: 400px;
 }
+
+/* 表格 */
+.lt_content .table-bordered>thead>tr>th   {
+  text-align: center;
+
+}
+
+.lt_content .table-bordered>tbody>tr>td {
+  vertical-align: middle;
+  text-align: center;
+}
+
+#paginator {
+  float: right;
+}

@@ -7,6 +7,10 @@
     <title>乐淘电商</title>
     <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="./lib/nprogress/nprogress.css" />
+    <link
+      rel="stylesheet"
+      href="./lib/bootstrap-validator/css/bootstrapValidator.min.css"
+    />
     <link rel="stylesheet" href="./css/common.css" />
   </head>
   <body>
@@ -25,19 +29,23 @@
       <div class="nav">
         <ul>
           <li>
-            <a href="user.html" 
+            <a href="user.html"
               ><i class="glyphicon glyphicon-user"></i>用户管理</a
             >
           </li>
           <li>
-            <a href="javascript:;" class="category"><i class="glyphicon glyphicon-list"></i>分类管理</a>
+            <a href="javascript:;" class="category"
+              ><i class="glyphicon glyphicon-list"></i>分类管理</a
+            >
             <div class="child" style="display: block;">
               <a href="first.html" class="current">一级分类</a>
               <a href="second.html">二级分类</a>
             </div>
           </li>
           <li>
-            <a href="product.html"><i class="glyphicon glyphicon-tags"></i>商品管理</a>
+            <a href="product.html"
+              ><i class="glyphicon glyphicon-tags"></i>商品管理</a
+            >
           </li>
         </ul>
       </div>
@@ -55,10 +63,38 @@
       <div class="container-fluid">
         <ol class="breadcrumb mt_20">
           <li><a href="index.html">管理系统</a></li>
-          <li class="active">用户管理</li>
+          <li class="active">分类管理</li>
+          <li class="active">一级分类</li>
         </ol>
+
+        <div class="lt_content">
+          <button class="btn btn-default" id="addCatBtn">添加分类</button>
+          <table class="table table-bordered table-hover mt_20">
+            <thead>
+              <tr>
+                <th width="20%">序号</th>
+                <th width="80%">一级分类名称</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+
+          <!-- 分页 -->
+          <ul id="userPaginator"></ul>
+        </div>
       </div>
     </div>
+
+    <!-- 模板渲染 -->
+
+    <script type="text/html" id="firstTpl">
+      {{each rows v i}}
+      <tr>
+        <td>{{i + 1 + (page - 1) * size}}</td>
+        <td>{{v.categoryName}}</td>
+      </tr>
+      {{/each}}
+    </script>
     <!-- 模态框 -->
     <div class="modal fade" tabindex="-1" id="logoutModal">
       <div class="modal-dialog modal-sm">
@@ -79,14 +115,42 @@
             <button type="button" class="btn btn-default" data-dismiss="modal">
               取消
             </button>
-            <button type="button" class="btn btn-primary modal_logout">退出</button>
+            <button type="button" class="btn btn-primary modal_logout">
+              退出
+            </button>
           </div>
+        </div>
+      </div>
+    </div>
+    <!-- 添加分类模态框 -->
+    <div class="modal fade" tabindex="-1" id="addModal">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <form id="form">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+              <h4 class="modal-title">添加分类</h4>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <input type="text" name="categoryName" class="form-control" placeholder="请输入一级分类">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+              <button type="submit" class="btn btn-primary">添加</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
     <script src="./lib/jquery/jquery.min.js"></script>
     <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="./lib/nprogress/nprogress.js"></script>
+    <script src="./lib/artTemplate/template-web.js"></script>
+    <script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
+    <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
     <script src="./js/common.js"></script>
+    <script src="./js/first.js"></script>
   </body>
 </html>

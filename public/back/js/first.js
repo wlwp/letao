@@ -1,6 +1,6 @@
 $(function() {
   var currentPage = 1 // 记录当前页
-  var pageSize = 2 // 记录每页条数
+  var pageSize = 5 // 记录每页条数
   render()
   function render() {
     $.ajax({
